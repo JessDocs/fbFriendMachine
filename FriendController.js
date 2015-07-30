@@ -1,0 +1,461 @@
+//Create a FriendController in the FriendController.js file
+app.controller('friends', function ($scope){
+	//In the FriendController copy the data from friend-data.json into a scope variable called 'friendsData' 
+	//in the FriendController
+
+  $scope.friendsData=
+[ {
+    "name": "Crazy Eyes",
+    "pic_square": "data:image/jpeg;base64,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",
+    "current_location": {
+      "city": "St George",
+      "state": "Utah",
+      "country": "United States",
+      "zip": "",
+      "latitude": "37.096528",
+      "longitude": "-113.568416",
+      "id": "115963528412345",
+      "name": "St George, Utah"
+      },
+    "status": {
+      "message": "I am Unique!!!",
+      "time": "1381101234",
+      "status_id": "10101839870254321",
+      "comment_count": "0"
+    },
+    "friend_count": 2,
+    "$$hashKey": "00l"
+  },
+  {
+    "name": "Preston McNeil",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash2/1117694_1614542_108355616_q.jpg",
+    "current_location": {
+      "city": "Houston",
+      "state": "Texas",
+      "country": "United States",
+      "zip": "",
+      "latitude": "29.7629",
+      "longitude": "-95.3832",
+      "id": "115963528414384",
+      "name": "Houston, Texas"
+    },
+    "status": null,
+    "friend_count": 628,
+    "$$hashKey": "005"
+  },
+  {
+    "name": "Ryan Rasmussen",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/211536_7938705_80713399_q.jpg",
+    "current_location": {
+      "city": "New York",
+      "state": "New York",
+      "country": "United States",
+      "zip": "",
+      "latitude": "40.7167",
+      "longitude": "-74",
+      "id": "108424279189115",
+      "name": "New York, New York"
+    },
+    "status": null,
+    "friend_count": 994,
+    "$$hashKey": "008"
+  },
+  {
+    "name": "Terri Ruff",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/41368_8222994_4799_q.jpg",
+    "current_location": {
+      "city": "Sandy",
+      "state": "Utah",
+      "country": "United States",
+      "zip": "",
+      "latitude": "40.5724",
+      "longitude": "-111.86",
+      "id": "105496622817769",
+      "name": "Sandy, Utah"
+    },
+    "status": {
+      "message": "Cannot wait for Hawaii! Excited to b away from work! I'm getting tired of all the drama!! Big news coming soon!!!",
+      "time": "1381115766",
+      "status_id": "10101839870247153",
+      "comment_count": "0"
+    },
+    "friend_count": 268,
+    "$$hashKey": "009"
+  },
+  {
+    "name": "Lindsey Mayer",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/173210_10024969_2137324550_q.jpg",
+    "current_location": null,
+    "status": null,
+    "friend_count": 870,
+    "$$hashKey": "00A"
+  },
+  {
+    "name": "Peter John Renslow",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash2/1085700_10051596_890338133_q.jpg",
+    "current_location": {
+      "city": "West Lafayette",
+      "state": "Indiana",
+      "country": "United States",
+      "zip": "",
+      "latitude": "40.4419",
+      "longitude": "-86.9124",
+      "id": "112305682116972",
+      "name": "West Lafayette, Indiana"
+    },
+    "status": {
+      "message": "The movie Gravity: decent. The orbital mechanics in the movie Gravity: not so much.",
+      "time": "1380945498",
+      "status_id": "10102928220609321",
+      "comment_count": "0"
+    },
+    "friend_count": 549,
+    "$$hashKey": "00I"
+  },
+  {
+    "name": "Craig Carroll",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/371702_10052664_1664842436_q.jpg",
+    "current_location": {
+      "city": "Tempe",
+      "state": "Arizona",
+      "country": "United States",
+      "zip": "",
+      "latitude": "33.4294",
+      "longitude": "-111.943",
+      "id": "112887355389124",
+      "name": "Tempe, Arizona"
+    },
+    "status": null,
+    "friend_count": 249,
+    "$$hashKey": "00K"
+  },
+  {
+    "name": "Jesse Morrison",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/623709_10053698_1875866361_q.jpg",
+    "current_location": null,
+    "status": {
+      "message": "I'm pretty excited at the prospect of having the option for cold water out of the faucet. Not just turning it all the way to the right and getting \"less hot\" water",
+      "time": "1380735264",
+      "status_id": "10102919605598871",
+      "comment_count": "0"
+    },
+    "friend_count": 393,
+    "$$hashKey": "00N"
+  },
+  {
+    "name": "Michelle Key",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash1/372639_10054231_314184666_q.jpg",
+    "current_location": null,
+    "status": null,
+    "friend_count": 928,
+    "$$hashKey": "00O"
+  },
+  {
+    "name": "Abe Itty",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/161103_10123983_1859311604_q.jpg",
+    "current_location": null,
+    "status": null,
+    "friend_count": 1427,
+    "$$hashKey": "011"
+  },
+  {
+    "name": "Ken Peng",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/49592_10133832_1627020292_q.jpg",
+    "current_location": {
+      "city": "Tucson",
+      "state": "Arizona",
+      "country": "United States",
+      "zip": "",
+      "latitude": "32.2217",
+      "longitude": "-110.926",
+      "id": "109570449061083",
+      "name": "Tucson, Arizona"
+    },
+    "status": null,
+    "friend_count": 376,
+    "$$hashKey": "013"
+  },
+  {
+    "name": "John Dohyung Kwon",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/static-ak/rsrc.php/v2/yo/r/UlIqmHJn-SK.gif",
+    "current_location": null,
+    "status": null,
+    "friend_count": 79,
+    "$$hashKey": "01D"
+  },
+  {
+    "name": "Dan Sullivan",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash1/273289_17800762_306073823_q.jpg",
+    "current_location": {
+      "city": "Cambridge",
+      "state": "Massachusetts",
+      "country": "United States",
+      "zip": "",
+      "latitude": "42.3737",
+      "longitude": "-71.1106",
+      "id": "108056275889020",
+      "name": "Cambridge, Massachusetts"
+    },
+    "status": null,
+    "friend_count": 527,
+    "$$hashKey": "01M"
+  },
+  {
+    "name": "Chad Bennett",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/372513_17802226_425948030_q.jpg",
+    "current_location": null,
+    "status": null,
+    "friend_count": 1885,
+    "$$hashKey": "01P"
+  },
+  {
+    "name": "Kirk Hill",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/41374_17802872_794_q.jpg",
+    "current_location": {
+      "city": "Pearland",
+      "state": "Texas",
+      "country": "United States",
+      "zip": "",
+      "latitude": "29.5543",
+      "longitude": "-95.296",
+      "id": "109297442421359",
+      "name": "Pearland, Texas"
+    },
+    "status": null,
+    "friend_count": 185,
+    "$$hashKey": "01Q"
+  },
+  {
+    "name": "Joseph 'Moses' Craven",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/372074_17803104_1870588520_q.jpg",
+    "current_location": {
+      "city": "Ardmore",
+      "state": "Oklahoma",
+      "country": "United States",
+      "zip": "",
+      "latitude": "34.1812",
+      "longitude": "-97.1294",
+      "id": "107705532592043",
+      "name": "Ardmore, Oklahoma"
+    },
+    "status": null,
+    "friend_count": 708,
+    "$$hashKey": "01R"
+  },
+  {
+    "name": "Jeremy James",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/261035_17806007_1068091327_q.jpg",
+    "current_location": {
+      "city": "Provo",
+      "state": "Utah",
+      "country": "United States",
+      "zip": "",
+      "latitude": "40.2444",
+      "longitude": "-111.661",
+      "id": "106066949424984",
+      "name": "Provo, Utah"
+    },
+    "status": null,
+    "friend_count": 555,
+    "$$hashKey": "01U"
+  },
+  {
+    "name": "Heather Clouse",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/623637_17808188_847129617_q.jpg",
+    "current_location": {
+      "city": "Orem",
+      "state": "Utah",
+      "country": "United States",
+      "zip": "",
+      "latitude": "40.2988",
+      "longitude": "-111.696",
+      "id": "103787786326610",
+      "name": "Orem, Utah"
+    },
+    "status": {
+      "message": "Last night I had a dream that my mother-in-law Angie Clouse unexpectedly stopped by my house and gave me a cleaning to do list.  Apparently it is time to clean my bathroom.",
+      "time": "1380826754",
+      "status_id": "10101094816311309",
+      "comment_count": "0"
+    },
+    "friend_count": 366,
+    "$$hashKey": "01W"
+  },
+  {
+    "name": "Joel Gardner",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash1/275556_17811336_577754819_q.jpg",
+    "current_location": {
+      "city": "Provo",
+      "state": "Utah",
+      "country": "United States",
+      "zip": "",
+      "latitude": "40.2444",
+      "longitude": "-111.661",
+      "id": "106066949424984",
+      "name": "Provo, Utah"
+    },
+    "status": null,
+    "friend_count": 518,
+    "$$hashKey": "027"
+  },
+  {
+    "name": "Lance Winward",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/161188_17813334_4416158_q.jpg",
+    "current_location": {
+      "city": "American Fork",
+      "state": "Utah",
+      "country": "United States",
+      "zip": "",
+      "latitude": "40.3842",
+      "longitude": "-111.792",
+      "id": "105675929465006",
+      "name": "American Fork, Utah"
+    },
+    "status": null,
+    "friend_count": 482,
+    "$$hashKey": "029"
+  },
+  {
+    "name": "JD Clark",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn2/276075_17814064_647271890_q.jpg",
+    "current_location": {
+      "city": "Provo",
+      "state": "Utah",
+      "country": "United States",
+      "zip": "",
+      "latitude": "40.2444",
+      "longitude": "-111.661",
+      "id": "106066949424984",
+      "name": "Provo, Utah"
+    },
+    "status": {
+      "message": "Internet, why you so distracting?? Stahhp",
+      "time": "1381246997",
+      "status_id": "10101102301306319",
+      "comment_count": "0"
+    },
+    "friend_count": 665,
+    "$$hashKey": "02B"
+  },
+  {
+    "name": "Spencer Mooso",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash2/1076291_17814202_641324374_q.jpg",
+    "current_location": {
+      "city": "Lehi",
+      "state": "Utah",
+      "country": "United States",
+      "zip": "",
+      "latitude": "40.4017",
+      "longitude": "-111.859",
+      "id": "105988932766243",
+      "name": "Lehi, Utah"
+    },
+    "status": null,
+    "friend_count": 579,
+    "$$hashKey": "02C"
+  },
+  {
+    "name": "Andrew Wiggins",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/186785_17814602_1643545710_q.jpg",
+    "current_location": {
+      "city": "Salt Lake City",
+      "state": "Utah",
+      "country": "United States",
+      "zip": "",
+      "latitude": "40.75",
+      "longitude": "-111.883",
+      "id": "106057819434480",
+      "name": "Salt Lake City, Utah"
+    },
+    "status": null,
+    "friend_count": 658,
+    "$$hashKey": "02F"
+  },
+  {
+    "name": "Brittany Brown",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash1/276284_17814624_766798593_q.jpg",
+    "current_location": null,
+    "status": {
+      "message": "Any of my wondeful friends know how to change a water pump on a ford explorer?? :) I will pay and provide delicious treats",
+      "time": "1381104137",
+      "status_id": "10101099840792209",
+      "comment_count": "0"
+    },
+    "friend_count": 690,
+    "$$hashKey": "02G"
+  },
+  {
+    "name": "Nick Petersen",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/202884_17814683_300937051_q.jpg",
+    "current_location": {
+      "city": "Jupiter",
+      "state": "Florida",
+      "country": "United States",
+      "zip": "",
+      "latitude": "26.926",
+      "longitude": "-80.105",
+      "id": "109307099087536",
+      "name": "Jupiter, Florida"
+    },
+    "status": {
+      "message": "Very grateful for the wisdom shared during the conferences of the church #ldsgeneralconference",
+      "time": "1381031808",
+      "status_id": "10101098585343139",
+      "comment_count": "0"
+    },
+    "friend_count": 707,
+    "$$hashKey": "02H"
+  },
+  {
+    "name": "Jeffrey Swindle",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash1/211601_17815112_1710482679_q.jpg",
+    "current_location": {
+      "city": "Ann Arbor",
+      "state": "Michigan",
+      "country": "United States",
+      "zip": "",
+      "latitude": "42.2745",
+      "longitude": "-83.7393",
+      "id": "105479049486624",
+      "name": "Ann Arbor, Michigan"
+    },
+    "status": null,
+    "friend_count": 1167,
+    "$$hashKey": "02I"
+  },
+  {
+    "name": "Travis Epperson",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/187078_17816042_3304316_q.jpg",
+    "current_location": {
+      "city": "Phoenix",
+      "state": "Arizona",
+      "country": "United States",
+      "zip": "",
+      "latitude": "33.4483",
+      "longitude": "-112.074",
+      "id": "105540216147364",
+      "name": "Phoenix, Arizona"
+    },
+    "status": null,
+    "friend_count": null,
+    "$$hashKey": "02M"
+  },
+  {
+    "name": "Matt LeGare",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash3/195517_17816894_384186_q.jpg",
+    "current_location": null,
+    "status": null,
+    "friend_count": 350,
+    "$$hashKey": "02P"
+  },
+  {
+    "name": "Karla Jensen Pratt",
+    "pic_square": "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/173707_17818839_4084230_q.jpg",
+    "current_location": null,
+    "status": null,
+    "friend_count": 855,
+    "$$hashKey": "02U"
+  }
+]
+
+});
